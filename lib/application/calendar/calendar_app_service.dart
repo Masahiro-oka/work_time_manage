@@ -1,8 +1,8 @@
 import 'package:work_time_manage/domain/calendar/calendar_repository_base.dart';
 import 'package:work_time_manage/domain/calendar/value/calendar.dart';
 
-import 'calendar/calendar_dto.dart';
-import 'calendar/calendar_save_command.dart';
+import 'command/calendar_save_command.dart';
+import 'dto/calendar_dto.dart';
 
 class CalendarAppService {
   final CalendarRepositoryBase _repository;

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:work_time_manage/application/todo/todo/todo_date_command.dart';
-import 'package:work_time_manage/application/todo/todo/todo_delete_command.dart';
-import 'package:work_time_manage/application/todo/todo/todo_dto.dart';
-import 'package:work_time_manage/application/todo/todo/todo_id_command.dart';
-import 'package:work_time_manage/application/todo/todo/todo_register_command.dart';
-import 'package:work_time_manage/application/todo/todo/todo_update_command.dart';
+import 'package:work_time_manage/application/todo/command/todo_date_command.dart';
+import 'package:work_time_manage/application/todo/command/todo_delete_command.dart';
+import 'package:work_time_manage/application/todo/command/todo_id_command.dart';
+import 'package:work_time_manage/application/todo/command/todo_register_command.dart';
+import 'package:work_time_manage/application/todo/command/todo_update_command.dart';
+import 'package:work_time_manage/application/todo/dto/todo_dto.dart';
 import 'package:work_time_manage/application/todo/todo_app_service.dart';
 
 class TodoChangeNotifier extends ChangeNotifier {

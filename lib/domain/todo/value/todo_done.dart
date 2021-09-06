@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 class TodoDone {
   final int idDone;
   TodoDone({required this.idDone}) {
-    if (idDone < 0 && idDone > 1) throw StateError('Only 0 or 1');
+    if (idDone != 0 && idDone != 1) throw StateError('値は0か1のみです。');
   }
 
   @override

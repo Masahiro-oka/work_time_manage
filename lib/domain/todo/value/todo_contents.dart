@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+
+@immutable
 class TodoContents {
   final String text;
   TodoContents({required this.text}) {

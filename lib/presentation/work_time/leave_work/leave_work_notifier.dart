@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:work_time_manage/application/dto/work_time/leave_work/command/leave_work_delete_command.dart';
-import 'package:work_time_manage/application/dto/work_time/leave_work/command/leave_work_id_command.dart';
-import 'package:work_time_manage/application/dto/work_time/leave_work/command/leave_work_save_command.dart';
-import 'package:work_time_manage/application/dto/work_time/leave_work/leave_work_dto.dart';
-import 'package:work_time_manage/application/dto/work_time/work_date/command/work_date_id_command.dart';
-import 'package:work_time_manage/application/work_time/leave_work_app_service.dart';
+import 'package:work_time_manage/application/work_time/leave_work/command/leave_work_delete_command.dart';
+import 'package:work_time_manage/application/work_time/leave_work/command/leave_work_id_command.dart';
+import 'package:work_time_manage/application/work_time/leave_work/command/leave_work_save_command.dart';
+import 'package:work_time_manage/application/work_time/leave_work/dto/leave_work_dto.dart';
+import 'package:work_time_manage/application/work_time/leave_work/leave_work_app_service.dart';
+import 'package:work_time_manage/application/work_time/work_date/command/work_date_id_command.dart';
 
 class LeaveWorkNotifier extends ChangeNotifier {
   final LeaveWorkAppService _appService;
@@ -13,7 +13,7 @@ class LeaveWorkNotifier extends ChangeNotifier {
       : _appService = appService;
 
   List<LeaveWorkDto> _list = [];
-  List<LeaveWorkDto> get list => _list;
+  List<LeaveWorkDto> get list => List.unmodifiable(_list);
 
   void sort() {
     _list.sort((a, b) => a.date.compareTo(b.date));
@@ -21,7 +21,7 @@ class LeaveWorkNotifier extends ChangeNotifier {
 
   Future<void> save(LeaveWorkSaveCommand command) async {
     await _appService.save(command);
-    await findAll();
+    findAll();
   }
 
   Future<void> delete(LeaveWorkDeleteCommand command) async {

@@ -3,13 +3,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:work_time_manage/application/calendar/calendar_app_service.dart';
 import 'package:work_time_manage/application/todo/todo_app_service.dart';
-import 'package:work_time_manage/application/work_time/at_work_app_service.dart';
-import 'package:work_time_manage/application/work_time/work_date_app_service.dart';
+import 'package:work_time_manage/application/work_time/at_work/at_work_app_service.dart';
+import 'package:work_time_manage/application/work_time/work_date/work_date_app_service.dart';
 import 'package:work_time_manage/domain/todo/todo_repository_base.dart';
 import 'package:work_time_manage/infrastructure/calendar/calendar_repository.dart';
 import 'package:work_time_manage/infrastructure/todo/todo_factory.dart';
 import 'package:work_time_manage/infrastructure/todo/todo_repository.dart';
-import 'package:work_time_manage/infrastructure/work_date/work_date_factory.dart';
+import 'package:work_time_manage/infrastructure/work_time/work_date/work_date_factory.dart';
 import 'package:work_time_manage/presentation/home/calendar/notifier/calendar_notifier.dart';
 import 'package:work_time_manage/presentation/home/calendar/widget/scroller_controller.dart';
 import 'package:work_time_manage/presentation/home/page/home_page.dart';
@@ -18,23 +18,19 @@ import 'package:work_time_manage/presentation/work_time/at_work/at_work_notifier
 import 'package:work_time_manage/presentation/work_time/leave_work/leave_work_notifier.dart';
 import 'package:work_time_manage/presentation/work_time/work_date/work_date_notifier.dart';
 
-import 'application/work_time/leave_work_app_service.dart';
+import 'application/work_time/leave_work/leave_work_app_service.dart';
 import 'domain/calendar/calendar_repository_base.dart';
-import 'domain/work_time_domain/at_work/at_work_repository_base.dart';
-import 'domain/work_time_domain/comment/comment_repository_base.dart';
-import 'domain/work_time_domain/leave_work/leave_work_repository_base.dart';
-import 'domain/work_time_domain/transportation_expenses/transportation_repository_base.dart';
-import 'domain/work_time_domain/work_date/work_date_repository_base.dart';
-import 'domain/work_time_domain/work_date/work_date_service.dart';
-import 'infrastructure/at_work/at_work_factory.dart';
-import 'infrastructure/at_work/at_work_repository.dart';
-import 'infrastructure/comment/db_comment_repository.dart';
+import 'domain/work_time/at_work/at_work_repository_base.dart';
+import 'domain/work_time/leave_work/leave_work_repository_base.dart';
+import 'domain/work_time/work_date/work_date_repository_base.dart';
+import 'domain/work_time/work_date/work_date_service.dart';
 import 'infrastructure/db_storage.dart';
-import 'infrastructure/leave_work/leave_work_factory.dart';
-import 'infrastructure/leave_work/leave_work_repository.dart';
 import 'infrastructure/shared_prefs_storage.dart';
-import 'infrastructure/transportation/db_transportation_repository.dart';
-import 'infrastructure/work_date/work_date_repository.dart';
+import 'infrastructure/work_time/at_work/at_work_factory.dart';
+import 'infrastructure/work_time/at_work/at_work_repository.dart';
+import 'infrastructure/work_time/leave_work/leave_work_factory.dart';
+import 'infrastructure/work_time/leave_work/leave_work_repository.dart';
+import 'infrastructure/work_time/work_date/work_date_repository.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
@@ -50,9 +46,9 @@ void main() {
     Provider<LeaveWorkRepositoryBase>(
         create: (context) => LeaveWorkRepository()),
     // Provider<BreakRepositoryBase>(create: (context) => DbBreakRepository()),
-    Provider<TransportationRepositoryBase>(
-        create: (context) => TransportationRepository()),
-    Provider<CommentRepositoryBase>(create: (context) => DbCommentRepository()),
+    // Provider<TransportationRepositoryBase>(
+    //     create: (context) => TransportationRepository()),
+    // Provider<CommentRepositoryBase>(create: (context) => DbCommentRepository()),
     Provider<TodoRepositoryBase>(
         create: (context) =>
             TodoRepository(instance: context.read<DbStorage>())),
@@ -115,3 +111,20 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//todo expenseのappservice,repository,nitifierの作成。
+//todo commentのappservice,repository,nitifierの作成。
+//todo 各項目の入力インタフェースの作成。（一括入力も）
+//todo overtimeを表示するwidget作成。
+//todo midnightを表示するwidget作成。
+//todo todoを表示する項目の作成。
+//todo calendarrollpickerの修正。
+//todo 各項目のカレンダーへの表示の構築drawerに記述している通りに。
+//todo drawerのチェックによる、表示非表示の作成。
+//todo listの詳細の各項目の表示。
+//todo todo一覧の削除機能。
+//todo 設定画面の作成。
+//todo 集計画面
+//todo ファイル画面
+//todo アプリについて
+//todo riverpodに変更する？

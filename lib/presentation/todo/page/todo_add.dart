@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:work_time_manage/application/todo/todo/todo_register_command.dart';
+import 'package:work_time_manage/application/todo/command/todo_register_command.dart';
 import 'package:work_time_manage/presentation/todo/notifier/todo_change_notifier.dart';
 
 import '../../widget/date_format.dart';

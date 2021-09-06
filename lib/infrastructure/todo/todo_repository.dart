@@ -88,8 +88,9 @@ class TodoRepository implements TodoRepositoryBase {
   Future<List<Todo>> findAll() async {
     final Database db = await _instance.dataBase;
     const query = "SELECT * FROM $_tableName ORDER BY id DESC";
-    final List<Map<String, dynamic>> result = await db.rawQuery(query);
-    if (result.isEmpty) return [];
-    return result.map((map) => fromMap(map)).toList();
+    final List<Map<String, dynamic>> results = await db.rawQuery(query);
+    if (results.isEmpty) return [];
+    final result = results.map((map) => fromMap(map)).toList();
+    return result;
   }
 }

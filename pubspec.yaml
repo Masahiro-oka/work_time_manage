@@ -42,10 +42,18 @@ dependencies:
   shared_preferences: ^2.0.6
   flutter_speed_dial: ^4.2.0
   uuid: ^3.0.4
+  hooks_riverpod:
+  state_notifier:
+  freezed_annotation:
+  fluttertoast:
+  equatable: ^2.0.3
+  async: ^2.7.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  freezed:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

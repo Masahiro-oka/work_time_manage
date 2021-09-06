@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:work_time_manage/application/todo/todo/todo_update_command.dart';
+import 'package:work_time_manage/application/todo/command/todo_update_command.dart';
 import 'package:work_time_manage/presentation/todo/notifier/todo_change_notifier.dart';
 import 'package:work_time_manage/presentation/widget/date_format.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:work_time_manage/application/dto/work_time/at_work/at_work_dto.dart';
-import 'package:work_time_manage/application/dto/work_time/at_work/command/at_work_delete_command.dart';
-import 'package:work_time_manage/application/dto/work_time/at_work/command/at_work_id_command.dart';
-import 'package:work_time_manage/application/dto/work_time/at_work/command/at_work_save_command.dart';
-import 'package:work_time_manage/application/dto/work_time/work_date/command/work_date_id_command.dart';
-import 'package:work_time_manage/application/work_time/at_work_app_service.dart';
+import 'package:work_time_manage/application/work_time/at_work/at_work_app_service.dart';
+import 'package:work_time_manage/application/work_time/at_work/command/at_work_delete_command.dart';
+import 'package:work_time_manage/application/work_time/at_work/command/at_work_id_command.dart';
+import 'package:work_time_manage/application/work_time/at_work/command/at_work_save_command.dart';
+import 'package:work_time_manage/application/work_time/at_work/dto/at_work_dto.dart';
+import 'package:work_time_manage/application/work_time/work_date/command/work_date_command.dart';
 
 class AtWorkNotifier extends ChangeNotifier {
   final AtWorkAppService _appService;
@@ -13,7 +13,7 @@ class AtWorkNotifier extends ChangeNotifier {
       : _appService = appService;
 
   List<AtWorkDto> _list = [];
-  List<AtWorkDto> get list => _list;
+  List<AtWorkDto> get list => List.unmodifiable(_list);
 
   void sort() {
     _list.sort((a, b) => a.date.compareTo(b.date));
@@ -21,7 +21,7 @@ class AtWorkNotifier extends ChangeNotifier {
 
   Future<void> save(AtWorkSaveCommand command) async {
     await _appService.save(command);
-    await findAll();
+    findAll();
   }
 
   Future<void> delete(AtWorkDeleteCommand command) async {
@@ -30,11 +30,11 @@ class AtWorkNotifier extends ChangeNotifier {
   }
 
   Future<AtWorkDto> findById(AtWorkIdCommand command) async {
-    AtWorkDto workDate = await _appService.get(command);
+    AtWorkDto workDate = await _appService.findById(command);
     return workDate;
   }
 
-  Future<AtWorkDto> findByDate(WorkDateIdCommand command) async {
+  Future<AtWorkDto> findByDate(WorkDateCommand command) async {
     AtWorkDto workDate = await _appService.findByDate(command);
     return workDate;
   }
